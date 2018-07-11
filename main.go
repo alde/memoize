@@ -32,7 +32,7 @@ func userHomeDir() string {
 }
 
 func setupCache() {
-	if _, err := os.Stat(cacheDir); os.IsNotExist(err) {
+	if _, err := os.Stat(filepath.FromSlash(cacheDir)); os.IsNotExist(err) {
 		os.Mkdir(cacheDir, 0755)
 	}
 }
@@ -44,7 +44,7 @@ func main() {
 	}
 	if os.Args[1] == "clear" {
 		fmt.Print("clearing cache....")
-		if err := os.RemoveAll(cacheDir); err != nil {
+		if err := os.RemoveAll(filepath.FromSlash(cacheDir)); err != nil {
 			fmt.Println("error\n", err)
 			os.Exit(1)
 		}
