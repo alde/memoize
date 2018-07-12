@@ -5,6 +5,12 @@ Memoize slow requests, and return the cached response instead.
 
 Useful when trying to assemble a `jq` query, or a `sed` nightmare string.
 
+## Installation
+
+```
+$ go install github.com/alde/memoize
+```
+
 ## Usage
 ```
 $ time ./memoize curl "https://artifactory.internal/artifactory/api/search/artifact?name=many-whelps" | jq '.results[-1].uri' | sed "s|.*/\([0-9\.]*\)/.*|\1|"
